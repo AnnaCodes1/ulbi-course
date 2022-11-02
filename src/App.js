@@ -11,22 +11,15 @@ function App() {
     { id: 3, title: 'Node.js', body: 'Description' },
   ])
 
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
-  // const bodyInputRef = useRef() // для неуправляемого компонента
+  const [post, setPost] = useState({title: '', body: ''})
+
 
   const addNewPost = (e) => {
     e.preventDefault()
-    const newPost = {
-      id: Date.now(),
-      title,
-      body
-    }
-    setPosts([...posts, newPost])
-    setTitle('')
-    setBody('')
 
-    // console.log(bodyInputRef.current.value) // для неуправляемого компонента
+    setPosts([...posts, {...post, id: Date.now()} ])
+    setPost({title: '', body: ''})
+    
   }
 
   return (
@@ -34,15 +27,15 @@ function App() {
       <form>
         {/* Управляемый компонент*/}
         <MyInput
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={post.title}
+          onChange={(e) => setPost({...post, title: e.target.value})}
           type="text"
           placeholder="Название"
         />
 
         <MyInput
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+          value={post.body}
+          onChange={(e) => setPost({...post, body: e.target.value})}
           type="text"
           placeholder="Содержание"
         />
@@ -54,7 +47,8 @@ function App() {
           placeholder="Описание" /> */}
 
         <MyButton onClick={addNewPost}>Создать пост</MyButton>
-      </form>
+
+    </form>
       <PostList posts={posts} title="Список номер 1" />
     </div>
   )
