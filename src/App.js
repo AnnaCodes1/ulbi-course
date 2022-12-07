@@ -39,15 +39,12 @@ function App() {
         filter={filter}
         setFilter={setFilter}
       />
-      {sortedAndSearchedPosts.length ? (
-        <PostList
-          posts={sortedAndSearchedPosts}
-          title='Список номер 1'
-          remove={removePost}
-        />
-      ) : (
-        <h1>Посты не найдены!</h1>
-      )}
+
+      <PostList
+        posts={sortedAndSearchedPosts}
+        title='Список номер 1'
+        remove={removePost}
+      />
     </div>
   )
 }
