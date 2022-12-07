@@ -1,16 +1,16 @@
 import React from 'react'
 
-const PostItem = ({ post, number }) => {
+const PostItem = ({ post, number, remove }) => {
   return (
-    <div className="post">
-      <div className="post__content">
+    <div className='post'>
+      <div className='post__content'>
         <strong>
           {number}. {post.title}
         </strong>
         <div>{post.body}</div>
       </div>
-      <div className="post__btns">
-        <button>Удалить</button>
+      <div className='post__btns'>
+        <button onClick={() => remove(post)}>Удалить</button>
       </div>
     </div>
   )
